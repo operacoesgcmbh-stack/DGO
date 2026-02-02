@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados - Sistema de Controle LP</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sistema de Controle LP</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inserir Dados</a></li>
+                <li><a href="resultados.html" class="active">Resultados</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="stats-section">
+            <h2>Resumo Estatístico</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number" id="totalRegistros">0</div>
+                    <div class="label">Total de Registros</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="totalIndeferidos">0</div>
+                    <div class="label">Com Indeferimento Anterior</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number" id="totalNaoIndeferidos">0</div>
+                    <div class="label">Sem Indeferimento Anterior</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="criteria-section">
+            <h2>Critérios de Classificação</h2>
+            <div style="display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="result-card warning">
+                    <h4>1º Critério - Indeferimento</h4>
+                    <p>BMs que já tiveram indeferimento anterior aparecem primeiro (prioridade máxima)</p>
+                </div>
+                <div class="result-card">
+                    <h4>2º Critério - Data de Efetivação</h4>
+                    <p>Ordenação pela data de efetivação mais antiga (maior tempo de serviço)</p>
+                </div>
+                <div class="result-card">
+                    <h4>3º Critério - Idade</h4>
+                    <p>Ordenação pela maior idade (data de nascimento mais antiga)</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section">
+            <h2>Lista Classificada</h2>
+            <div class="table-controls">
+                <input type="text" id="searchResults" placeholder="Buscar na lista..." class="search-input">
+                <select id="filterIndeferimento" class="search-input" style="max-width: 250px;">
+                    <option value="all">Todos</option>
+                    <option value="sim">Apenas Indeferidos</option>
+                    <option value="nao">Apenas Não Indeferidos</option>
+                </select>
+                <button class="btn btn-secondary" id="refreshResults">Atualizar</button>
+                <button class="btn btn-primary" id="exportCSV">Exportar CSV</button>
+            </div>
+            <div class="table-container">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Posição</th>
+                            <th>BM</th>
+                            <th>Nome</th>
+                            <th>Status</th>
+                            <th>Data Início</th>
+                            <th>Data Término</th>
+                            <th>Dias</th>
+                            <th>Indeferimento</th>
+                            <th>Data Efetivação</th>
+                            <th>Data Nascimento</th>
+                            <th>Idade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Sistema de Controle de Licença Prêmio &copy; 2024</p>
+    </footer>
+
+    <script src="resultados.js"></script>
+</body>
+</html>

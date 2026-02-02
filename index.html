@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Controle - Licença Prêmio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Sistema de Controle LP</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inserir Dados</a></li>
+                <li><a href="resultados.html">Resultados</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <h2>Inserir Nova Solicitação</h2>
+            <form id="formBuscar">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="bm">BM *</label>
+                        <input type="text" id="bm" name="bm" required placeholder="Ex: 115038-1">
+                    </div>
+                    <div class="form-group">
+                        <label for="nome">Nome *</label>
+                        <input type="text" id="nome" name="nome" required placeholder="Nome completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="status">Status</label>
+                        <select id="status" name="status">
+                            <option value="A CONFIRMA">A CONFIRMAR</option>
+                            <option value="CONFIRMADO">CONFIRMADO</option>
+                            <option value="PENDENTE">PENDENTE</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="divisao">Divisão</label>
+                        <input type="number" id="divisao" name="divisao" placeholder="Ex: 3">
+                    </div>
+                    <div class="form-group">
+                        <label for="dataInicio">Data Início *</label>
+                        <input type="date" id="dataInicio" name="dataInicio" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dataTermino">Data Término *</label>
+                        <input type="date" id="dataTermino" name="dataTermino" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="diasCorridos">Dias Corridos</label>
+                        <input type="number" id="diasCorridos" name="diasCorridos" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoLicenca">Tipo de Licença</label>
+                        <select id="tipoLicenca" name="tipoLicenca">
+                            <option value="LICENÇA-PRÊMIO - 5 ANOS">Licença-Prêmio - 5 Anos</option>
+                            <option value="LICENÇA-PRÊMIO - 10 ANOS">Licença-Prêmio - 10 Anos</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Inserir e Verificar</span>
+                        <span class="btn-loading" style="display:none;">Processando...</span>
+                    </button>
+                    <button type="reset" class="btn btn-secondary">Limpar</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="result-section" id="resultSection" style="display:none;">
+            <h2>Resultado da Verificação</h2>
+            <div id="resultContent"></div>
+        </section>
+
+        <section class="data-section">
+            <h2>Dados Atuais - BUSCAR</h2>
+            <div class="table-controls">
+                <input type="text" id="searchTable" placeholder="Buscar na tabela..." class="search-input">
+                <button class="btn btn-secondary" id="refreshData">Atualizar Dados</button>
+            </div>
+            <div class="table-container">
+                <table id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>BM</th>
+                            <th>Nome</th>
+                            <th>Status</th>
+                            <th>Divisão</th>
+                            <th>Data Início</th>
+                            <th>Data Término</th>
+                            <th>Dias</th>
+                            <th>Tipo</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Sistema de Controle de Licença Prêmio &copy; 2024</p>
+    </footer>
+
+    <div id="modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="modalTitle"></h3>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
